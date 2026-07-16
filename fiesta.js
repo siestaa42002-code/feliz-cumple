@@ -20,7 +20,7 @@ const FIESTA_CONFIG = {
     "Una vida promedio dura unas 4.000 semanas. Gastar las tuyas conmigo es una pésima inversión, y aun así aquí estás. Respeto.",
     "Cada vela que soplas es un año que se quemó para siempre. Sopla con rabia, que se note.",
     "Cuando la muerte venga por ti, va a tener que negociar conmigo primero. Y yo no negocio: muerdo.",
-    "Los franceses le dicen al placer 'la pequeña muerte'. Esta noche planeo asesinarte con mucho cariño. Varias veces.",
+    "Los franceses le dicen al placer 'la pequeña muerte'. Esta noche planeo asesinarte con mucho cariño. Varias veces... O bueno... esperemos al sábado.",
     "Envejecer contigo no es un plan, es una sentencia. Por suerte pedí cadena perpetua.",
   ],
 

@@ -2,7 +2,7 @@
    CONFIG — edita SOLO este bloque con tus textos y fotos
    ===================================================== */
 const CONFIG = {
-  nombre: "Mi amor", // su nombre o apodo
+  nombre: "My love", 
 
   portada: {
     eyebrow: "Hoy es tu día",
@@ -15,8 +15,8 @@ const CONFIG = {
 
 Quería regalarte algo que nadie más pudiera darte, así que construí este pequeño rincón del internet solo para ti.
 
-Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este año que empieza va a ser increíble, y quiero verlo todo contigo.`,
-    firma: "— Con todo mi amor, Santi",
+Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este tiempo que empieza va a ser increíble, y quiero verlo todo contigo.`,
+    firma: "— Whit love, Santi",
   },
 
   // Recuerdos: entre 4 y 7 se ve mejor. "fecha" es libre (texto).
