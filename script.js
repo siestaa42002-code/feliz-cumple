@@ -141,6 +141,15 @@ const svg = $("constellation-svg");
 const NS = "http://www.w3.org/2000/svg";
 const card = $("memory-card");
 
+function cerrarRecuerdo() {
+  card.hidden = true;
+  svg.querySelectorAll(".star-group").forEach(el => el.classList.remove("active"));
+}
+
+// Tocar la tarjeta la cierra
+card.style.cursor = "pointer";
+card.addEventListener("click", cerrarRecuerdo);
+
 function buildConstellation() {
   const n = CONFIG.recuerdos.length;
   const W = 360, H = 420, padX = 56, padY = 46;
@@ -183,6 +192,11 @@ function buildConstellation() {
     label.textContent = rec.titulo;
 
     const open = () => {
+      // Si ya estaba abierta esta misma estrella, se cierra
+      if (g.classList.contains("active")) {
+        cerrarRecuerdo();
+        return;
+      }
       svg.querySelectorAll(".star-group").forEach(el => el.classList.remove("active"));
       g.classList.add("active");
       $("memory-date").textContent = rec.fecha;
