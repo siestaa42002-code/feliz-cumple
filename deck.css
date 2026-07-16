@@ -1,0 +1,143 @@
+/* ============================================
+   Deck: cada sección es una pantalla completa
+   con tema propio y botón para avanzar
+   ============================================ */
+
+html, body { height: 100%; }
+body { overflow: hidden; }
+
+.deck {
+  position: relative;
+  z-index: 1;
+  height: 100svh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Portada como pantalla exacta */
+.deck .hero { height: 100svh; min-height: 0; }
+
+/* Cada sección: pantalla completa, contenido centrado,
+   scroll interno solo si el contenido no cabe */
+.deck main .section {
+  height: 100svh;
+  min-height: 100svh;
+  max-width: none;
+  margin: 0;
+  padding: 2.6rem 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  text-align: center;
+}
+.deck main .section > * {
+  width: 100%;
+  max-width: 640px;
+  flex: none;
+}
+.deck main .section .section-hint { margin-bottom: 1.3rem; }
+
+/* Botón de avanzar */
+.deck main .section > .next-btn {
+  width: 46px;
+  height: 46px;
+  max-width: 46px;
+  margin-top: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  animation: bajar 2.2s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.deck main .section > .next-btn:hover,
+.deck main .section > .next-btn:focus-visible {
+  opacity: 1;
+  transform: scale(1.08);
+}
+.next-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@keyframes bajar {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 5px; }
+}
+
+/* ---------- Temas por pantalla ---------- */
+
+/* Noche: fondo transparente, se ve el cielo estrellado */
+.t-noche { background: transparent; }
+
+/* Carta a la luz de una vela */
+.t-carta {
+  background: radial-gradient(130% 110% at 50% -10%, #33200f 0%, #1a0e06 65%, #100803 100%);
+}
+.t-carta .eyebrow { color: #e8a94f; }
+.t-carta .letter-paper {
+  background: rgba(255, 236, 200, 0.05);
+  border-color: rgba(232, 169, 79, 0.35);
+}
+
+/* Vino profundo para los idiomas */
+.t-vino {
+  background: linear-gradient(165deg, #43102a 0%, #240a1c 60%, #16050f 100%);
+}
+.t-vino .eyebrow { color: var(--rosa); }
+
+/* Menta pastel para la galería */
+.t-menta {
+  background: linear-gradient(160deg, var(--p-menta) 0%, var(--p-cielo) 100%);
+  color: #23343a;
+}
+.t-menta .eyebrow { color: #2e7d6a; }
+.t-menta .section-title { color: #23343a; }
+.t-menta .section-hint { color: rgba(35, 52, 58, 0.65); }
+
+/* Rojo profundo para los corazones */
+.t-rojo {
+  background: linear-gradient(180deg, #330c17 0%, #14040c 100%);
+}
+.t-rojo .eyebrow { color: var(--rosa); }
+.t-rojo #game-canvas {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(242, 169, 184, 0.35);
+}
+
+/* Lila para la pregunta traviesa (pisa el degradé pastel general) */
+.t-lila {
+  background: linear-gradient(160deg, var(--p-lila) 0%, var(--p-rosa) 100%);
+}
+
+/* Oro viejo para el raspadito */
+.t-oro {
+  background: radial-gradient(120% 100% at 50% 0%, #2c2208 0%, #171104 70%, #0e0a02 100%);
+}
+.t-oro .eyebrow { color: var(--dorado); }
+
+/* ---------- Footer como cierre ---------- */
+.deck .footer {
+  min-height: 45svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: end;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .deck { scroll-behavior: auto; }
+  .next-btn { animation: none; }
+}

@@ -2,8 +2,6 @@
    FIESTA_CONFIG — edita este bloque con lo tuyo
    ===================================================== */
 const FIESTA_CONFIG = {
-  cinta: "Feliz cumpleaños ✳ Feliz cumpleaños ✳ Feliz cumpleaños ✳",
-
   globos: {
     meta: 8,
     palabras: ["hermosa", "valiente", "única", "brillante", "mi paz", "mi caos favorito", "inolvidable", "mía"],
@@ -16,14 +14,16 @@ const FIESTA_CONFIG = {
     mensajeSi: "Lo sabía. No tenías escapatoria, el otro botón era decorativo.",
   },
 
-  // Humor negro de cumpleaños. Edita o agrega las que quieras.
+  // Humor negro pesado de cumpleaños. Edita o agrega las que quieras.
   cartas: [
-    "Un año más cerca de la muerte. Por suerte, también un año más conmigo. No sé qué es peor.",
-    "Las estadísticas confirman que la gente que cumple años vive más que la que deja de cumplirlos. Vas muy bien.",
-    "Hoy llevas 365 días más esquivando a la muerte. Ella está frustrada; yo, orgulloso.",
-    "Si un fantasma te asusta esta noche, dile que haga fila. Yo te vi primero.",
-    "Envejecer es obligatorio. Hacerlo conmigo es una amenaza. Digo, una promesa.",
-    "Cuando seamos dos esqueletos, el mío va a seguir tomándote de la mano. Qué romántico y qué perturbador.",
+    "Feliz cumpleaños: oficialmente te queda un año menos. Nadie sabe cuántos quedan, y esa es exactamente la gracia.",
+    "Una vida promedio dura unas 4.000 semanas. Gastar las tuyas conmigo es una pésima inversión, y aun así aquí estás. Respeto.",
+    "Cada vela que soplas es un año que se quemó para siempre. Sopla con rabia, mi amor, que se note.",
+    "Algún día seremos polvo. Mientras tanto, propongo ser polvo enamorado, con torta y mal humor.",
+    "Cuando la muerte venga por ti, va a tener que negociar conmigo primero. Y yo no negocio: muerdo.",
+    "Te amaré hasta que la muerte nos separe. Y después pienso acosarla hasta que nos vuelva a juntar. Tengo tiempo: toda la eternidad.",
+    "Tu certificado de nacimiento es, técnicamente, el primer documento de una cuenta regresiva. Feliz aniversario de tu countdown.",
+    "Envejecer contigo no es un plan, es una sentencia. Por suerte pedí cadena perpetua.",
   ],
 
   mediodia: {
@@ -42,10 +42,14 @@ const FIESTA_CONFIG = {
   const $f = (id) => document.getElementById(id);
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Cinta ---------- */
-  const track = $f("marquee-track");
-  // Se duplica el contenido para que el bucle sea continuo
-  track.textContent = (FIESTA_CONFIG.cinta + " ").repeat(6);
+  /* ---------- Navegación entre pantallas ---------- */
+  document.querySelectorAll(".next-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const slide = btn.closest(".slide");
+      const destino = slide.nextElementSibling || $f("footer");
+      destino.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+    });
+  });
 
   /* ---------- Globos ---------- */
   const arena = $f("globos-arena");
@@ -129,7 +133,6 @@ const FIESTA_CONFIG = {
     if (respondido) return;
     intentos++;
 
-    // El No se encoge y cambia de texto; el Sí crece
     const escala = Math.max(1 - intentos * 0.13, 0.35);
     btnNo.style.transform = `scale(${escala})`;
     btnSi.style.transform = `scale(${1 + intentos * 0.12})`;
@@ -137,13 +140,11 @@ const FIESTA_CONFIG = {
     const frases = FIESTA_CONFIG.pregunta.respuestasNo;
     btnNo.textContent = frases[Math.min(intentos - 1, frases.length - 1)];
 
-    // Se mueve a un punto aleatorio dentro del área
     const maxX = pArena.clientWidth - btnNo.offsetWidth - 10;
     const maxY = pArena.clientHeight - btnNo.offsetHeight - 10;
     btnNo.style.left = 5 + Math.random() * Math.max(maxX, 10) + "px";
     btnNo.style.top = 5 + Math.random() * Math.max(maxY, 10) + "px";
 
-    // Después de varios intentos, desaparece del todo
     if (intentos > frases.length) {
       btnNo.style.opacity = "0";
       btnNo.style.pointerEvents = "none";
@@ -211,8 +212,6 @@ const FIESTA_CONFIG = {
     const resta = objetivo - Date.now();
 
     if (resta <= 0) {
-      // Si faltaban menos de 12 h cuando llegó a cero, celebra en vivo;
-      // si ya había pasado hace rato, muestra el mensaje alternativo.
       const pasadoHace = Math.abs(resta);
       celebrar(pasadoHace > 60 * 1000 ? FIESTA_CONFIG.mediodia.yaPaso : "");
       return;
