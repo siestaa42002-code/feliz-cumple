@@ -4,33 +4,31 @@
 const FIESTA_CONFIG = {
   globos: {
     meta: 8,
-    palabras: ["hermosa", "valiente", "única", "brillante", "mi paz", "mi caos favorito", "inolvidable", "mía"],
-    mensajeVictoria: "Reventaste todo, como mi corazón la primera vez que te vi.",
+    palabras: ["peligrosa", "insufrible", "mía", "mi ruina", "letal", "mi caos", "inevitable", "mi problema"],
+    mensajeVictoria: "Reventaste todo. Qué manera tan tuya de tratar las cosas frágiles. Igual me encantas.",
   },
 
   pregunta: {
     titulo: "¿Me quieres para siempre?",
-    respuestasNo: ["¿Segura?", "Piénsalo", "No te creo", "Última chance", "..."],
-    mensajeSi: "Lo sabía. No tenías escapatoria, el otro botón era decorativo.",
+    respuestasNo: ["¿Segura?", "Error", "Jaja no", "Rendirse es opción", "..."],
+    mensajeSi: "Correcto. El otro botón era decorativo. Nunca tuviste escapatoria.",
   },
 
   // Humor negro pesado de cumpleaños. Edita o agrega las que quieras.
   cartas: [
     "Feliz cumpleaños: oficialmente te queda un año menos. Nadie sabe cuántos quedan, y esa es exactamente la gracia.",
     "Una vida promedio dura unas 4.000 semanas. Gastar las tuyas conmigo es una pésima inversión, y aun así aquí estás. Respeto.",
-    "Cada vela que soplas es un año que se quemó para siempre. Sopla con rabia, mi amor, que se note.",
-    "Algún día seremos polvo. Mientras tanto, propongo ser polvo enamorado, con torta y mal humor.",
+    "Cada vela que soplas es un año que se quemó para siempre. Sopla con rabia, que se note.",
     "Cuando la muerte venga por ti, va a tener que negociar conmigo primero. Y yo no negocio: muerdo.",
-    "Te amaré hasta que la muerte nos separe. Y después pienso acosarla hasta que nos vuelva a juntar. Tengo tiempo: toda la eternidad.",
-    "Tu certificado de nacimiento es, técnicamente, el primer documento de una cuenta regresiva. Feliz aniversario de tu countdown.",
+    "Los franceses le dicen al placer 'la pequeña muerte'. Esta noche planeo asesinarte con mucho cariño. Varias veces.",
     "Envejecer contigo no es un plan, es una sentencia. Por suerte pedí cadena perpetua.",
   ],
 
   mediodia: {
     // Su hora exacta de nacimiento: 16 de julio, 12:00 del mediodía (hora local)
     objetivo: "2026-07-16T12:00:00",
-    mensaje: "12:00 en punto. Hace exactamente un montón de años llegaste al mundo, y hace un rato llegaste al mío. Feliz hora de nacimiento.",
-    yaPaso: "Tus 12:00 ya pasaron hoy, pero la sorpresa sigue siendo tuya:",
+    mensaje: "12:00 en punto. A esta hora exacta llegaste al mundo a complicarlo todo. Buen trabajo. Feliz hora de nacimiento.",
+    yaPaso: "Tus 12:00 ya pasaron, pero la deuda sigue vigente:",
   },
 };
 

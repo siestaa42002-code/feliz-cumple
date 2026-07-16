@@ -1,11 +1,34 @@
 /* ============================================
-   Deck: cada sección es una pantalla completa
-   con tema propio y botón para avanzar
+   Deck: pantallas completas, temas por sección,
+   sin scrollbars visibles y fondo dinámico
    ============================================ */
 
 html, body { height: 100%; }
-body { overflow: hidden; }
+body {
+  overflow: hidden;
+  background: #07050d;
+}
 
+/* ---------- Fondo dinámico: nebulosa oscura ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(70px);
+  background:
+    radial-gradient(38% 38% at 22% 28%, rgba(122, 18, 56, 0.32), transparent 70%),
+    radial-gradient(32% 32% at 78% 68%, rgba(66, 22, 118, 0.38), transparent 70%),
+    radial-gradient(26% 26% at 55% 15%, rgba(20, 60, 90, 0.28), transparent 70%);
+  animation: nebulosa 20s ease-in-out infinite alternate;
+}
+@keyframes nebulosa {
+  from { transform: translate3d(-4%, -3%, 0) scale(1) rotate(0deg); }
+  to { transform: translate3d(4%, 5%, 0) scale(1.18) rotate(3deg); }
+}
+
+/* ---------- Contenedor de pantallas ---------- */
 .deck {
   position: relative;
   z-index: 1;
@@ -20,17 +43,27 @@ body { overflow: hidden; }
   scroll-snap-stop: always;
 }
 
+/* Scrollbars ocultos (deck y scroll interno de cada pantalla) */
+.deck,
+.deck main .section {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.deck::-webkit-scrollbar,
+.deck main .section::-webkit-scrollbar {
+  display: none;
+}
+
 /* Portada como pantalla exacta */
 .deck .hero { height: 100svh; min-height: 0; }
 
-/* Cada sección: pantalla completa, contenido centrado,
-   scroll interno solo si el contenido no cabe */
+/* Cada sección: pantalla completa, contenido centrado y compacto */
 .deck main .section {
   height: 100svh;
   min-height: 100svh;
   max-width: none;
   margin: 0;
-  padding: 2.6rem 1.4rem 1.6rem;
+  padding: 1.8rem 1.2rem 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,24 +76,34 @@ body { overflow: hidden; }
   max-width: 640px;
   flex: none;
 }
-.deck main .section .section-hint { margin-bottom: 1.3rem; }
 
-/* Botón de avanzar */
+/* Tipografía compacta para que todo quepa */
+.deck main .section .eyebrow { margin-bottom: 0.4rem; }
+.deck main .section .section-title {
+  font-size: clamp(1.35rem, 4.5vw, 1.9rem);
+  margin-bottom: 0.3rem;
+}
+.deck main .section .section-hint {
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Botón de avanzar ---------- */
 .deck main .section > .next-btn {
-  width: 46px;
-  height: 46px;
-  max-width: 46px;
-  margin-top: 1.7rem;
+  width: 44px;
+  height: 44px;
+  max-width: 44px;
+  margin-top: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: inherit;
   background: transparent;
   border: 1px solid currentColor;
   border-radius: 50%;
   cursor: pointer;
-  opacity: 0.65;
+  opacity: 0.6;
   transition: opacity 0.2s ease, transform 0.2s ease;
   animation: bajar 2.2s ease-in-out infinite;
   -webkit-tap-highlight-color: transparent;
@@ -76,14 +119,84 @@ body { overflow: hidden; }
   50% { translate: 0 5px; }
 }
 
+/* ---------- Ajustes de encaje por sección ---------- */
+
+/* Carta */
+.deck .letter-paper { min-height: 0; padding: 1.4rem 1.3rem; }
+.deck #letter-text { font-size: 1.02rem; line-height: 1.6; }
+
+/* Constelación: SVG limitado en alto y tarjeta flotando encima */
+.deck #constellation-svg {
+  display: block;
+  height: 54svh;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.deck .memory-card {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  width: min(92%, 380px);
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+}
+.deck .memory-text { font-size: 0.95rem; }
+
+/* Idiomas */
+.deck .idioma-card { min-height: 9rem; padding: 1.6rem 1.3rem; }
+.deck .btn-ghost { margin-top: 1rem; }
+
+/* Globos y corazones: arenas relativas al viewport */
+.deck .globos-arena { height: 46svh; }
+.deck #game-canvas { height: 46svh; }
+
+/* Galería compacta 2x2 */
+.deck .gallery {
+  max-width: 460px;
+  margin-inline: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+.deck .polaroid { padding: 0.45rem 0.45rem 1.8rem; }
+.deck .polaroid figcaption { font-size: 0.75rem; margin-top: 0.4rem; }
+
+/* Pregunta */
+.deck .pregunta-arena { height: 34svh; min-height: 200px; }
+
+/* Cartas del más allá compactas */
+.deck .cartas-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  max-width: 480px;
+  margin-inline: auto;
+}
+.deck .carta3d { height: 148px; }
+.deck .carta3d-atras { font-size: 0.78rem; line-height: 1.4; padding: 0.7rem; }
+.deck .ghost { width: 34px; height: 42px; border-radius: 17px 17px 5px 5px; }
+.deck .ghost::before, .deck .ghost::after { top: 14px; width: 5px; height: 7px; }
+.deck .ghost::before { left: 9px; }
+.deck .ghost::after { right: 9px; }
+
+/* Raspadito */
+.deck .scratch-message { min-height: 160px; font-size: 1.05rem; }
+
+/* Cuenta regresiva */
+.deck .count-grid { max-width: 440px; margin-inline: auto; }
+
+/* Pastel del deseo */
+.deck .cake { margin-top: 1.4rem; transform: scale(0.9); transform-origin: top center; }
+.deck .cake:active { transform: scale(0.88); }
+
 /* ---------- Temas por pantalla ---------- */
 
-/* Noche: fondo transparente, se ve el cielo estrellado */
+/* Noche: transparente, se ven estrellas y nebulosa */
 .t-noche { background: transparent; }
 
 /* Carta a la luz de una vela */
 .t-carta {
-  background: radial-gradient(130% 110% at 50% -10%, #33200f 0%, #1a0e06 65%, #100803 100%);
+  background: radial-gradient(130% 110% at 50% -10%, rgba(51, 32, 15, 0.92) 0%, rgba(26, 14, 6, 0.94) 65%, rgba(16, 8, 3, 0.96) 100%);
 }
 .t-carta .eyebrow { color: #e8a94f; }
 .t-carta .letter-paper {
@@ -91,13 +204,13 @@ body { overflow: hidden; }
   border-color: rgba(232, 169, 79, 0.35);
 }
 
-/* Vino profundo para los idiomas */
+/* Vino profundo */
 .t-vino {
-  background: linear-gradient(165deg, #43102a 0%, #240a1c 60%, #16050f 100%);
+  background: linear-gradient(165deg, rgba(67, 16, 42, 0.94) 0%, rgba(36, 10, 28, 0.95) 60%, rgba(22, 5, 15, 0.97) 100%);
 }
 .t-vino .eyebrow { color: var(--rosa); }
 
-/* Menta pastel para la galería */
+/* Menta pastel */
 .t-menta {
   background: linear-gradient(160deg, var(--p-menta) 0%, var(--p-cielo) 100%);
   color: #23343a;
@@ -106,9 +219,9 @@ body { overflow: hidden; }
 .t-menta .section-title { color: #23343a; }
 .t-menta .section-hint { color: rgba(35, 52, 58, 0.65); }
 
-/* Rojo profundo para los corazones */
+/* Rojo profundo */
 .t-rojo {
-  background: linear-gradient(180deg, #330c17 0%, #14040c 100%);
+  background: linear-gradient(180deg, rgba(51, 12, 23, 0.94) 0%, rgba(20, 4, 12, 0.97) 100%);
 }
 .t-rojo .eyebrow { color: var(--rosa); }
 .t-rojo #game-canvas {
@@ -116,14 +229,14 @@ body { overflow: hidden; }
   border-color: rgba(242, 169, 184, 0.35);
 }
 
-/* Lila para la pregunta traviesa (pisa el degradé pastel general) */
+/* Lila */
 .t-lila {
   background: linear-gradient(160deg, var(--p-lila) 0%, var(--p-rosa) 100%);
 }
 
-/* Oro viejo para el raspadito */
+/* Oro viejo */
 .t-oro {
-  background: radial-gradient(120% 100% at 50% 0%, #2c2208 0%, #171104 70%, #0e0a02 100%);
+  background: radial-gradient(120% 100% at 50% 0%, rgba(44, 34, 8, 0.94) 0%, rgba(23, 17, 4, 0.96) 70%, rgba(14, 10, 2, 0.98) 100%);
 }
 .t-oro .eyebrow { color: var(--dorado); }
 
@@ -140,4 +253,5 @@ body { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .deck { scroll-behavior: auto; }
   .next-btn { animation: none; }
+  body::before { animation: none; }
 }

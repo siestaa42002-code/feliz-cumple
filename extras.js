@@ -2,25 +2,25 @@
    EXTRAS_CONFIG — edita este bloque si quieres
    ===================================================== */
 const EXTRAS_CONFIG = {
-  // Frases lindas en varios idiomas. Puedes agregar o quitar.
+  // Frases en varios idiomas: románticas pero con veneno.
   idiomas: [
-    { lang: "Francés", frase: "Tu es la plus belle chose qui me soit arrivée.", trad: "Eres lo más lindo que me ha pasado." },
-    { lang: "Italiano", frase: "Sei il mio sole in ogni giornata.", trad: "Eres mi sol en cada día." },
-    { lang: "Portugués", frase: "Você faz meu coração sorrir.", trad: "Haces sonreír a mi corazón." },
-    { lang: "Japonés", frase: "君は僕の宝物 (Kimi wa boku no takaramono).", trad: "Eres mi tesoro." },
-    { lang: "Alemán", frase: "Mit dir ist jeder Tag ein Geschenk.", trad: "Contigo, cada día es un regalo." },
-    { lang: "Coreano", frase: "너는 나의 별이야 (Neoneun naui byeoriya).", trad: "Eres mi estrella." },
-    { lang: "Inglés", frase: "You are my favorite place in the world.", trad: "Eres mi lugar favorito en el mundo." },
-    { lang: "Griego", frase: "Είσαι το φως μου (Eísai to fos mou).", trad: "Eres mi luz." },
+    { lang: "Francés", frase: "Même la mort devra faire la queue pour toi.", trad: "Hasta la muerte tendrá que hacer fila por ti." },
+    { lang: "Italiano", frase: "Ti amerò anche quando saremo cenere.", trad: "Te amaré incluso cuando seamos ceniza." },
+    { lang: "Portugués", frase: "Você é o meu caos preferido.", trad: "Eres mi caos preferido." },
+    { lang: "Japonés", frase: "地獄でも君を探す (Jigoku demo kimi o sagasu).", trad: "Hasta en el infierno te buscaría." },
+    { lang: "Alemán", frase: "Du bist mein Lieblingsende der Welt.", trad: "Eres mi fin del mundo favorito." },
+    { lang: "Coreano", frase: "너 없는 영원은 사양할게 (Neo eomneun yeongwon-eun sayanghalge).", trad: "Una eternidad sin ti: no, gracias." },
+    { lang: "Inglés", frase: "You're the only ghost I'd let haunt me.", trad: "Eres el único fantasma al que dejaría perseguirme." },
+    { lang: "Griego", frase: "Θα σε βρω και στον Άδη (Tha se vro kai ston Adi).", trad: "Te encontraría hasta en el Hades." },
   ],
 
   juego: {
-    meta: 10, // corazones que debe atrapar
-    mensajeVictoria: "Atrapaste todos mis corazones. Igual ya eran tuyos.",
+    meta: 10,
+    mensajeVictoria: "Los atrapaste todos. Ahora son tu problema. Como yo.",
   },
 
   raspadito: {
-    mensaje: "Vale por un abrazo infinito, una cena y todo mi amor. Canjeable hoy y siempre.",
+    mensaje: "Vale por una noche en la que el pastel no va a ser lo único que se prueba. Canjeable cuando estemos solos, sin devoluciones.",
   },
 };
 
@@ -47,7 +47,7 @@ const EXTRAS_CONFIG = {
     tradEl.textContent = f.trad;
     tradEl.hidden = true;
     card.classList.remove("swap");
-    void card.offsetWidth; // reinicia la animación
+    void card.offsetWidth;
     card.classList.add("swap");
   }
 
@@ -108,10 +108,10 @@ const EXTRAS_CONFIG = {
       x: 30 + Math.random() * (w - 60),
       y: -30,
       size: 22 + Math.random() * 16,
-      vy: 55 + Math.random() * 65, // px por segundo
+      vy: 55 + Math.random() * 65,
       sway: Math.random() * Math.PI * 2,
       color: colors[Math.floor(Math.random() * colors.length)],
-      pop: 0, // animación al atraparlo
+      pop: 0,
     });
   }
 
@@ -207,7 +207,6 @@ const EXTRAS_CONFIG = {
     sCtx.fillStyle = grad;
     sCtx.fillRect(0, 0, wrap.width, wrap.height);
 
-    // Textura de brillitos
     for (let i = 0; i < 90; i++) {
       sCtx.fillStyle = `rgba(253, 246, 233, ${0.15 + Math.random() * 0.3})`;
       sCtx.beginPath();
@@ -236,7 +235,6 @@ const EXTRAS_CONFIG = {
     if (revealed) return;
     const data = sCtx.getImageData(0, 0, sCanvas.width, sCanvas.height).data;
     let clear = 0;
-    // Muestreo cada 16 píxeles para no bloquear el hilo
     for (let i = 3; i < data.length; i += 64) {
       if (data[i] === 0) clear++;
     }
@@ -260,7 +258,6 @@ const EXTRAS_CONFIG = {
     checkReveal();
   });
 
-  // Pintar la cubierta cuando la sección ya es visible (main empieza oculto)
   const openBtn = document.getElementById("btn-open");
   if (openBtn) openBtn.addEventListener("click", () => setTimeout(paintCover, 100));
   window.addEventListener("resize", () => { if (!revealed) paintCover(); });
