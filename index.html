@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti</title>
+  <meta name="description" content="Un regalo hecho con código y cariño.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+
+  <!-- Cielo estrellado (fondo global) -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <!-- 1. Portada -->
+  <header class="hero" id="hero">
+    <p class="eyebrow" id="hero-eyebrow">Hoy es tu día</p>
+    <h1 class="hero-title"><span id="hero-name">·</span></h1>
+    <p class="hero-sub" id="hero-sub">·</p>
+    <button class="btn-open" id="btn-open">Abrir tu regalo</button>
+    <p class="scroll-hint" aria-hidden="true">✳</p>
+  </header>
+
+  <main id="regalo" hidden>
+
+    <!-- 2. Carta -->
+    <section class="section letter-section" id="carta">
+      <p class="eyebrow">Una carta para ti</p>
+      <div class="letter-paper">
+        <p id="letter-text" aria-live="polite"></p>
+        <p class="letter-sign" id="letter-sign"></p>
+      </div>
+    </section>
+
+    <!-- 3. Constelación de recuerdos -->
+    <section class="section constellation-section" id="recuerdos">
+      <p class="eyebrow">Nuestra constelación</p>
+      <h2 class="section-title">Cada estrella, un recuerdo</h2>
+      <p class="section-hint">Toca una estrella</p>
+      <div class="constellation" id="constellation">
+        <svg id="constellation-svg" viewBox="0 0 360 420" role="list" aria-label="Recuerdos"></svg>
+        <div class="memory-card" id="memory-card" hidden>
+          <p class="memory-date" id="memory-date"></p>
+          <p class="memory-text" id="memory-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Te quiero en todos los idiomas -->
+    <section class="section idiomas-section" id="idiomas">
+      <p class="eyebrow">En todos los idiomas</p>
+      <h2 class="section-title">Cosas lindas que no entiendes</h2>
+      <p class="section-hint">Toca la tarjeta para descubrir qué dice</p>
+      <div class="idioma-card" id="idioma-card" role="button" tabindex="0" aria-label="Tocar para revelar la traducción">
+        <p class="idioma-lang" id="idioma-lang"></p>
+        <p class="idioma-frase" id="idioma-frase"></p>
+        <p class="idioma-trad" id="idioma-trad" hidden></p>
+      </div>
+      <button class="btn-ghost" id="idioma-next">Otra frase</button>
+    </section>
+
+    <!-- 5. Galería -->
+    <section class="section gallery-section" id="galeria">
+      <p class="eyebrow">Momentos</p>
+      <h2 class="section-title">Fotos nuestras</h2>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- 6. Minijuego: atrapa corazones -->
+    <section class="section game-section" id="juego">
+      <p class="eyebrow">Un jueguito</p>
+      <h2 class="section-title">Atrapa mis corazones</h2>
+      <p class="section-hint" id="game-hint">Toca los corazones antes de que caigan</p>
+      <div class="game-wrap">
+        <canvas id="game-canvas" aria-label="Juego de atrapar corazones"></canvas>
+        <div class="game-hud">
+          <span id="game-score">0</span> / <span id="game-goal">10</span>
+        </div>
+        <button class="btn-open btn-game" id="game-start">Jugar</button>
+        <p class="game-win" id="game-win" hidden></p>
+      </div>
+    </section>
+
+    <!-- 7. Raspadito secreto -->
+    <section class="section scratch-section" id="secreto">
+      <p class="eyebrow">Shhh</p>
+      <h2 class="section-title">Un secreto para ti</h2>
+      <p class="section-hint">Raspa con el dedo para descubrirlo</p>
+      <div class="scratch-wrap">
+        <p class="scratch-message" id="scratch-message"></p>
+        <canvas id="scratch-canvas" aria-label="Raspa para revelar el mensaje secreto"></canvas>
+      </div>
+    </section>
+
+    <!-- 8. Pastel y deseo -->
+    <section class="section cake-section" id="deseo">
+      <p class="eyebrow">Lo más importante</p>
+      <h2 class="section-title">Pide un deseo</h2>
+      <p class="section-hint" id="cake-hint">Mantén presionado el pastel para soplar las velas</p>
+
+      <div class="cake" id="cake" role="button" tabindex="0" aria-label="Mantén presionado para soplar las velas">
+        <div class="candles">
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+          <div class="candle"><span class="flame"></span></div>
+        </div>
+        <div class="cake-top"></div>
+        <div class="cake-mid"></div>
+        <div class="cake-base"></div>
+        <div class="plate"></div>
+      </div>
+
+      <p class="final-message" id="final-message" hidden></p>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="footer" hidden>
+    <p id="footer-text"></p>
+  </footer>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+  <script src="extras.js"></script>
+</body>
+</html>

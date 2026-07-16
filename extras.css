@@ -1,0 +1,162 @@
+/* ============================================
+   Extras: idiomas, minijuego y raspadito
+   ============================================ */
+
+/* ---------- Botón secundario ---------- */
+.btn-ghost {
+  margin-top: 1.4rem;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dorado);
+  background: transparent;
+  border: 1px solid rgba(245, 200, 107, 0.5);
+  border-radius: 999px;
+  padding: 0.7rem 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-ghost:hover, .btn-ghost:focus-visible {
+  background: rgba(245, 200, 107, 0.12);
+  transform: translateY(-1px);
+}
+.btn-ghost:focus-visible { outline: 2px solid var(--crema); outline-offset: 3px; }
+
+/* ---------- Idiomas ---------- */
+.idioma-card {
+  background: rgba(253, 246, 233, 0.06);
+  border: 1px solid rgba(242, 169, 184, 0.35);
+  border-radius: 16px;
+  padding: 2.2rem 1.6rem;
+  cursor: pointer;
+  min-height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.idioma-card:hover, .idioma-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--rosa);
+}
+.idioma-card:focus-visible { outline: 2px solid var(--crema); outline-offset: 3px; }
+
+.idioma-lang {
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--rosa);
+}
+
+.idioma-frase {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(1.25rem, 4.5vw, 1.7rem);
+  line-height: 1.45;
+}
+
+.idioma-trad {
+  color: var(--dorado);
+  font-size: 1rem;
+  animation: rise 0.4s ease;
+}
+
+.idioma-card.swap { animation: swapCard 0.45s ease; }
+@keyframes swapCard {
+  0% { opacity: 0; transform: translateY(10px) rotate(-0.5deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+/* ---------- Minijuego ---------- */
+.game-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+#game-canvas {
+  width: 100%;
+  height: 380px;
+  border: 1px solid rgba(245, 200, 107, 0.3);
+  border-radius: 16px;
+  background: rgba(11, 16, 38, 0.5);
+  touch-action: none;
+  display: block;
+}
+
+.game-hud {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--dorado);
+  pointer-events: none;
+}
+
+.btn-game {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+.btn-game:hover, .btn-game:focus-visible {
+  transform: translate(-50%, -52%) scale(1.03);
+}
+
+.game-win {
+  margin-top: 1.2rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--rosa);
+  animation: rise 0.6s ease;
+}
+
+/* ---------- Raspadito ---------- */
+.scratch-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 200, 107, 0.4);
+}
+
+.scratch-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 1.6rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 350;
+  font-size: clamp(1.15rem, 4vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--crema);
+  background: linear-gradient(135deg, var(--indigo), #2b1b46);
+}
+
+#scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+#scratch-canvas.cleared {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idioma-card.swap, .idioma-trad, .game-win { animation: none; }
+}
