@@ -43,7 +43,7 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este tiempo 
     mensajeFinal: "Deseo concedido. Te amo. Feliz cumpleaños.",
   },
 
-  footer: "Hecho a mano para ti · 2026",
+  footer: "Hecho a mano para ti ￣▽￣",
 };
 
 /* =====================================================
