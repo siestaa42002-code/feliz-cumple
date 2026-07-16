@@ -31,7 +31,7 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este año qu
   // Fotos: pon los archivos en /img y escribe el nombre aquí.
   // Si "src" queda vacío (""), se muestra un placeholder bonito.
   fotos: [
-    { src: "https://drive.google.com/file/d/1v3IDICAqGGADgr72d6GvRcQRQjAhrShf/view?usp=sharing", caption: "Pon una foto aquí" },
+    { src: "https://drive.google.com/file/d/1rbFLSYq61C-ExggWxlqjhivjylENqJCd/view?usp=sharing", caption: "Pequeños paseitos" },
     { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=drive_link", caption: "Y otra aquí" },
     { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "Una más" },
     { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "La última" },
