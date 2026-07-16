@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="fiesta.css">
 </head>
 <body>
 
@@ -35,6 +36,9 @@
         <p class="letter-sign" id="letter-sign"></p>
       </div>
     </section>
+
+    <!-- Cinta animada -->
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee-track"></div></div>
 
     <!-- 3. Constelación de recuerdos -->
     <section class="section constellation-section" id="recuerdos">
@@ -63,14 +67,27 @@
       <button class="btn-ghost" id="idioma-next">Otra frase</button>
     </section>
 
-    <!-- 5. Galería -->
+    <!-- 5. Globos pastel -->
+    <section class="section pastel-section globos-section" id="globos">
+      <p class="eyebrow eyebrow-pastel">Fiesta pastel</p>
+      <h2 class="section-title">Revienta los globos</h2>
+      <p class="section-hint">Cada globo guarda una palabra para ti</p>
+      <div class="globos-wrap">
+        <div class="globos-arena" id="globos-arena"></div>
+        <div class="globos-hud"><span id="globos-count">0</span> / <span id="globos-goal">8</span></div>
+        <button class="btn-open btn-arena" id="globos-start">Empezar</button>
+        <p class="game-win" id="globos-win" hidden></p>
+      </div>
+    </section>
+
+    <!-- 6. Galería -->
     <section class="section gallery-section" id="galeria">
       <p class="eyebrow">Momentos</p>
       <h2 class="section-title">Fotos nuestras</h2>
       <div class="gallery" id="gallery"></div>
     </section>
 
-    <!-- 6. Minijuego: atrapa corazones -->
+    <!-- 7. Minijuego: atrapa corazones -->
     <section class="section game-section" id="juego">
       <p class="eyebrow">Un jueguito</p>
       <h2 class="section-title">Atrapa mis corazones</h2>
@@ -85,7 +102,27 @@
       </div>
     </section>
 
-    <!-- 7. Raspadito secreto -->
+    <!-- 8. Botón travieso -->
+    <section class="section pastel-section pregunta-section" id="pregunta">
+      <p class="eyebrow eyebrow-pastel">Una pregunta seria</p>
+      <h2 class="section-title" id="pregunta-titulo"></h2>
+      <p class="section-hint">Piénsalo bien</p>
+      <div class="pregunta-arena" id="pregunta-arena">
+        <button class="btn-si" id="btn-si">Sí</button>
+        <button class="btn-no" id="btn-no">No</button>
+      </div>
+      <p class="game-win" id="pregunta-msg" hidden></p>
+    </section>
+
+    <!-- 9. Cartas del más allá -->
+    <section class="section cartas-section" id="cartas">
+      <p class="eyebrow eyebrow-morado">Humor del más allá</p>
+      <h2 class="section-title">Verdades macabras de cumpleaños</h2>
+      <p class="section-hint">Voltea una carta, si te atreves</p>
+      <div class="cartas-grid" id="cartas-grid"></div>
+    </section>
+
+    <!-- 10. Raspadito secreto -->
     <section class="section scratch-section" id="secreto">
       <p class="eyebrow">Shhh</p>
       <h2 class="section-title">Un secreto para ti</h2>
@@ -96,7 +133,21 @@
       </div>
     </section>
 
-    <!-- 8. Pastel y deseo -->
+    <!-- 11. Cuenta regresiva a las 12:00 -->
+    <section class="section pastel-section countdown-section" id="mediodia">
+      <p class="eyebrow eyebrow-pastel">Naciste justo al mediodía</p>
+      <h2 class="section-title">Tus 12:00 en punto</h2>
+      <p class="section-hint" id="count-hint">Cuando el reloj marque tu hora, pasa algo</p>
+      <div class="count-grid" id="count-grid">
+        <div class="count-cell"><span class="count-num" id="cd-d">0</span><span class="count-lbl">días</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-h">0</span><span class="count-lbl">horas</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-m">0</span><span class="count-lbl">min</span></div>
+        <div class="count-cell"><span class="count-num" id="cd-s">0</span><span class="count-lbl">seg</span></div>
+      </div>
+      <p class="final-message" id="count-msg" hidden></p>
+    </section>
+
+    <!-- 12. Pastel y deseo -->
     <section class="section cake-section" id="deseo">
       <p class="eyebrow">Lo más importante</p>
       <h2 class="section-title">Pide un deseo</h2>
@@ -127,5 +178,6 @@
 
   <script src="script.js"></script>
   <script src="extras.js"></script>
+  <script src="fiesta.js"></script>
 </body>
 </html>
