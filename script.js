@@ -34,7 +34,7 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este año qu
     { src: "https://drive.google.com/file/d/1rbFLSYq61C-ExggWxlqjhivjylENqJCd/view?usp=sharing", caption: "Paseos a tu lado ♡" },
     { src: "https://drive.google.com/file/d/1uKIeQsu5cCXrzP8H2io26v8hpmlS2DzG/view?usp=sharing", caption: "Pequeñas travesuras..." },
     { src: "https://drive.google.com/file/d/1-36acWcALCmJ2mlkhZncbDezmTf4vYw5/view?usp=sharing", caption: "El inicio de buenos momentos" },
-    { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "La última" },
+    { src: "https://drive.google.com/file/d/1Exvy--z3psvRjACx-Go8YbVCXJQ7v5km/view?usp=sharing", caption: "Bby... Toca ir a misa." },
     // Ejemplo con foto real: { src: "img/nosotros.jpg", caption: "Nosotros" },
   ],
 
