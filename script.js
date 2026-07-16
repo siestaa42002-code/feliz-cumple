@@ -31,10 +31,10 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este año qu
   // Fotos: pon los archivos en /img y escribe el nombre aquí.
   // Si "src" queda vacío (""), se muestra un placeholder bonito.
   fotos: [
-    { src: "", caption: "Pon una foto aquí" },
-    { src: "", caption: "Y otra aquí" },
-    { src: "", caption: "Una más" },
-    { src: "", caption: "La última" },
+    { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "Pon una foto aquí" },
+    { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "Y otra aquí" },
+    { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "Una más" },
+    { src: "https://drive.google.com/file/d/1ZvJeNonSdq-2hOt18N9xm0FsjR1kcN86/view?usp=sharing", caption: "La última" },
     // Ejemplo con foto real: { src: "img/nosotros.jpg", caption: "Nosotros" },
   ],
 
@@ -201,18 +201,40 @@ function buildConstellation() {
 buildConstellation();
 
 /* ---------- Galería ---------- */
+// Convierte enlaces de compartir de Google Drive en URLs de imagen directa.
+// Acepta: .../file/d/ID/view, .../open?id=ID, .../uc?id=ID, o el ID pelado.
+function driveSrc(url) {
+  if (!url) return "";
+  if (!url.includes("drive.google.com") && !url.includes("/")) {
+    // Parece un ID pelado
+    return `https://drive.google.com/thumbnail?id=${url}&sz=w1200`;
+  }
+  const m = url.match(/\/d\/([\w-]+)/) || url.match(/[?&]id=([\w-]+)/);
+  if (m) return `https://drive.google.com/thumbnail?id=${m[1]}&sz=w1200`;
+  return url; // no es de Drive: se usa tal cual (ej. img/foto.jpg)
+}
+
 const gallery = $("gallery");
 CONFIG.fotos.forEach((f, i) => {
   const fig = document.createElement("figure");
   fig.className = "polaroid";
   fig.style.setProperty("--tilt", `${(i % 2 === 0 ? -1 : 1) * (1.5 + (i % 3))}deg`);
 
-  if (f.src) {
+  const src = driveSrc(f.src);
+  if (src) {
     const img = document.createElement("img");
     img.className = "ph";
-    img.src = f.src;
+    img.src = src;
     img.alt = f.caption || "Foto";
     img.loading = "lazy";
+    img.referrerPolicy = "no-referrer";
+    // Si Drive falla, se muestra el placeholder en vez de un icono roto
+    img.addEventListener("error", () => {
+      const ph = document.createElement("div");
+      ph.className = "ph ph-empty";
+      ph.textContent = "✳";
+      img.replaceWith(ph);
+    });
     fig.appendChild(img);
   } else {
     const ph = document.createElement("div");
