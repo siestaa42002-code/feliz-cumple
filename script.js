@@ -21,12 +21,12 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este tiempo 
 
   // Recuerdos: entre 4 y 7 se ve mejor. "fecha" es libre (texto).
   recuerdos: [
-    { titulo: "El inicio", fecha: "El día que empezó todo", texto: "Aquí va la historia de cómo empezó todo. Edítame." },
-    { titulo: "Primera cita", fecha: "Nuestra primera salida", texto: "Aquí va ese recuerdo de la primera cita. Edítame." },
-    { titulo: "Ese viaje", fecha: "Una aventura juntos", texto: "Aquí va un viaje o paseo que no olvidan. Edítame." },
-    { titulo: "Una risa", fecha: "Ese chiste interno", texto: "Aquí va ese momento que solo ustedes entienden. Edítame." },
-    { titulo: "Hoy", fecha: "Tu cumpleaños", texto: "Y hoy celebro que existas. Feliz cumpleaños." },
-  ],
+  { titulo: "El origen", fecha: "Hace años, cuando éramos otros", texto: "Nos conocemos desde hace años. El universo llevaba todo ese tiempo tramando esto y nosotros sin enterarnos. Paciencia de villano, la del universo." },
+  { titulo: "El intento", fecha: "La versión beta", texto: "Lo intentamos. Con lo que sabíamos entonces, que era poco. Buen elenco, mal guion, cancelada en la primera temporada." },
+  { titulo: "La ruptura", fecha: "El capítulo que casi nos mata", texto: "Rompimos. Años separados, cada uno por su lado, fingiendo que era el final. Spoiler: no era el final." },
+  { titulo: "La propuesta", fecha: "La noche que firmé mi sentencia", texto: "Me quedé a dormir en tu casa y saliste con la propuesta de ser algo. Dije que sí. Cláusula permanente, sin letra pequeña, sin devoluciones." },
+  { titulo: "Hoy", fecha: "16 de julio, '12:00 en punto'", texto: "Un año menos de vida, un año más conmigo. No sé cuál de las dos noticias es peor. Feliz cumpleaños." },
+],
 
   // Fotos: pon los archivos en /img y escribe el nombre aquí.
   // Si "src" queda vacío (""), se muestra un placeholder bonito.
@@ -40,7 +40,7 @@ Gracias por cada risa, cada plan improvisado y cada día a tu lado. Este tiempo 
 
   deseo: {
     hint: "Mantén presionado el pastel para soplar las velas",
-    mensajeFinal: "Deseo concedido. Te amo. Feliz cumpleaños.",
+    mensajeFinal: "Deseo concedido. I ♡ U. Feliz cumple.",
   },
 
   footer: "Hecho a mano para ti ￣▽￣",
